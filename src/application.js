@@ -47,7 +47,8 @@ const Application = {
 
     if (!app) return
 
-    const mountPoint = document.querySelector('.columns')
+    const mountPoint = document.querySelector('.adder').parentNode
+    const lastBtn = document.querySelector('.adder')
 
     const object = JSON.parse(app)
 
@@ -56,7 +57,7 @@ const Application = {
     for (const {id, noteIds, title} of object.columns.items) {
       const column = new Column(id, title)
 
-      mountPoint.prepend(column.element)
+      mountPoint.insertBefore(column.element, lastBtn)
 
       for (const noteId of noteIds) {
         const {id, content} = getNoteById(noteId)

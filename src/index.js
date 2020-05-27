@@ -5,10 +5,12 @@ import '@/styles/style.scss'
 
 Application.load()
 
+const lastBtn = document.querySelector('.adder')
+
 document.querySelector('[data-action-addColumn]').addEventListener('click', function () {
   const column = new Column()
 
-  document.querySelector('.columns').prepend(column.element)
+  lastBtn.parentNode.insertBefore(column.element, lastBtn)
 
   Application.save()
 })
